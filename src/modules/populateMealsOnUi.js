@@ -1,10 +1,11 @@
 import {fetchMeals,fetchMealsList} from './fetchMeals.js';
 import updateUiLikes from './updateUiLikes.js';
 import itemsCount from './itemsCount.js';
+import commentModel from './comments.js';
 
 
 const select = document.querySelector('.form-select');
-
+// ########fetch all meals cat to Droplist
 export const displayCategories = () => {
   fetchMeals().then((data) => {
     data.categories.forEach((item) => {
@@ -66,7 +67,7 @@ export const populateMealsOnUi = async (category) => {
               </div>
             </div>
             <div class="d-grid gap-2">
-              <button class="btn btn-secondary" type="button">
+              <button class="btn btn-secondary commentBtn" id="${meal.idMeal}" type="button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -91,6 +92,15 @@ export const populateMealsOnUi = async (category) => {
 
   listElem.innerHTML = row;
 
+  listElem.addEventListener('click', (e)=>{
+    if(e.target.classList.contains('commentBtn')){
+      const target = e.target.id;
+      console.log(target)
+      commentModel(target)
+    }
+
+  })
+
   // meals counter element
   const mealsCounterElem = document.getElementById('meals-counter');
 
@@ -99,7 +109,6 @@ export const populateMealsOnUi = async (category) => {
   mealsCounterElem.innerHTML = `(${mealsCount})`;
 
   setTimeout(() => {
-    // update likes
     updateUiLikes();
   }, 50);
 };

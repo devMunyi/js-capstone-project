@@ -10,5 +10,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addLike = addLike;
-
-
