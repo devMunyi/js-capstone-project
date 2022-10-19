@@ -1,4 +1,4 @@
-import fetchMeals from './fetchMeals.js';
+import {fetchMeals} from './fetchMeals.js';
 
 const itemsCount = async () => {
   // meals data

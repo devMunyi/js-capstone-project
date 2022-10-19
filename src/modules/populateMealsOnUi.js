@@ -1,10 +1,35 @@
-import fetchMeals from './fetchMeals.js';
+import {fetchMeals,fetchMealsList} from './fetchMeals.js';
 import updateUiLikes from './updateUiLikes.js';
 import itemsCount from './itemsCount.js';
 
-const populateMealsOnUi = async () => {
+
+const select = document.querySelector('.form-select');
+
+export const displayCategories = () => {
+  fetchMeals().then((data) => {
+    data.categories.forEach((item) => {
+      const opt = document.createElement('option');
+      opt.value = item.strCategory;
+      opt.innerHTML = item.strCategory;
+      select.appendChild(opt);
+    });
+  });
+};
+
+
+export const displayData = (categoryName) => {
+  populateMealsOnUi(categoryName);
+};
+
+select.addEventListener('change', (event) => {
+  const categoryName = event.target.value;
+  displayData(categoryName);
+});
+
+
+export const populateMealsOnUi = async (category) => {
   // meals data
-  const { categories: meals } = await fetchMeals();
+  const { meals: meals } = await fetchMealsList(category);
 
   //row
   let row = '';
@@ -16,16 +41,16 @@ const populateMealsOnUi = async () => {
     row += `<div class="cards-grid mb-5">
         <div class="card">
           <img
-            src="${meal.strCategoryThumb}"
+            src="${meal.strMealThumb}"
             class="card-img-top"
-            alt="${meal.strCategory}"
+            alt="${meal.strMeal}"
           />
           <div class="card-body">
             <div class="title-and-likes-wrapper mb-5">
-              <h5 class="card-title">${meal.strCategory}</h5>
+              <h5 class="card-title">${meal.strMeal}</h5>
               <div class="likes-wrapper">
                 <svg
-                  onclick="addLike(${meal.idCategory})"
+                  onclick="addLike(${meal.idMeal})"
                   id='icon-${meal.idCategory}'
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -79,4 +104,4 @@ const populateMealsOnUi = async () => {
   }, 50);
 };
 
-export default populateMealsOnUi;
+// export default populateMealsOnUi;

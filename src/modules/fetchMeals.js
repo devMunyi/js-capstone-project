@@ -1,5 +1,5 @@
 //fetch data meals from meals API
-const fetchMeals = async () => {
+export const fetchMeals = async () => {
   const response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/categories.php`
   );
@@ -7,4 +7,10 @@ const fetchMeals = async () => {
   return response.json();
 };
 
-export default fetchMeals;
+export const fetchMealsList = async (category) => {
+  const filterCategoryAPI = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
+  const response = await fetch(filterCategoryAPI);
+  return response.json();
+};
+
+// export default fetchMeals;
