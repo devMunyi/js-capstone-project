@@ -1,8 +1,8 @@
-import {fetchMeals} from './fetchMeals.js';
+import {fetchMeals,fetchMealsList} from './fetchMeals.js';
 
-const itemsCount = async () => {
+const itemsCount = async (category) => {
   // meals data
-  const { categories: meals } = await fetchMeals();
+  const { meals: meals } = await fetchMealsList(category);
 
   //meals count
   return meals.length;
