@@ -1,0 +1,76 @@
+/* style for small screens only */
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+
+  .meals-list {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+}
+
+/* style for big screens only */
+@media screen and (min-width: 768px){
+   .meals-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 30px;
+  }
+}
+
+/* common styles  */
+.title-and-likes-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.likes-wrapper {
+  display:  flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.liked {
+  color: red;
+  transform: scale(1.5);
+}
+
+svg {
+  cursor: pointer !important;
+}
+
+svg:hover {
+  transform: scale(1.4);
+}
+
+.navbar-brand, .nav-item .nav-link{
+  color: white;
+}
+
+.nav-link:hover, .btn:hover {
+  color: black;
+}
+
+footer {
+  color: white;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.footer-link:hover {
+  color: black;
+  text-decoration: underline;
+}

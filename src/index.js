@@ -1,13 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'; // import bootstrap css
 import './index.css'; // import custom css
+import populateMealsOnUi from './modules/populateMealsOnUi.js';
+import addLike from './modules/addLike.js';
 
-const testTemplate = () => {
-  const containerElem = document.querySelector('.container');
-  const h1 = document.createElement('h1');
+document.addEventListener('DOMContentLoaded', () => {
+  populateMealsOnUi();
+});
 
-  h1.innerHTML = 'Template Testing';
-
-  containerElem.appendChild(h1);
-};
-
-document.addEventListener('DOMContentLoaded', testTemplate);
+window.addLike = addLike;

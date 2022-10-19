@@ -9,12 +9,6 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/js-capstone-project/',
   },
-  devServer: {
-    watchFiles: ['src/*'],
-    static: './dist',
-    hot: false, // optional, but you must not set both hot and liveReload to true
-    liveReload: true, // allow  browser automatic refresh on file changes
-  },
 
   module: {
     rules: [
@@ -32,5 +26,12 @@ module.exports = {
 
   optimization: {
     runtimeChunk: 'single',
+  },
+
+  devServer: {
+    static: './dist',
+    watchFiles: ['src/*.html'],
+    hot: false,
+    liveReload: true,
   },
 };
