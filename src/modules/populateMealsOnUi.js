@@ -1,8 +1,7 @@
-import {fetchMeals,fetchMealsList} from './fetchMeals.js';
+import { fetchMeals, fetchMealsList } from './fetchMeals.js';
 import updateUiLikes from './updateUiLikes.js';
 import itemsCount from './itemsCount.js';
 import commentModel from './comments.js';
-
 
 const select = document.querySelector('.form-select');
 // ########fetch all meals cat to Droplist
@@ -17,7 +16,6 @@ export const displayCategories = () => {
   });
 };
 
-
 export const displayData = (categoryName) => {
   populateMealsOnUi(categoryName);
 };
@@ -26,7 +24,6 @@ select.addEventListener('change', (event) => {
   const categoryName = event.target.value;
   displayData(categoryName);
 });
-
 
 export const populateMealsOnUi = async (category) => {
   // meals data
@@ -91,13 +88,12 @@ export const populateMealsOnUi = async (category) => {
 
   listElem.innerHTML = row;
 
-  listElem.addEventListener('click', (e)=>{
-    if(e.target.classList.contains('commentBtn')){
+  listElem.addEventListener('click', (e) => {
+    if (e.target.classList.contains('commentBtn')) {
       const target = e.target.id;
-      commentModel(target)
+      commentModel(target);
     }
-
-  })
+  });
 
   // meals counter element
   const mealsCounterElem = document.getElementById('meals-counter');

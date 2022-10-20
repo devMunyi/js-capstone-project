@@ -20,14 +20,19 @@ const dataToBeRecieved = {
   ],
 };
 
-global.fetch = jest.fn(() => {
-  return new Promise((resolve) => {
-    resolve(dataToBeRecieved);
+global.fetch = jest.fn((url, data) => {
+  return new Promise((resolve, reject) => {
+    json: () => {
+      return new Promise((resolve, reject) => {
+        resolve(dataToBeRecieved);
+      });
+    };
   });
 });
 
 test('count retrived data items', () => {
   const execute = itemsCount();
+  const size = dataToBeRecieved.length;
 
-  expect(execute).resolves.toEqual(dataToBeRecieved);
+  expect(execute).resolves.toEqual(size);
 });
