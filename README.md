@@ -1,4 +1,10 @@
-# LeaderBoard
+# Js-capstone-project (Meals List)
+
+This is the JavaScript capstone project. We build Meal recipes website based on an external API (Meals DB)[https://www.themealdb.com/api.php] and (Involvement API)[https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270]. The websites is dynamic and build basic single page apps using ES6 syntax, ES6 modules, callbacks, promises and webpack. follow Gitflow and perform a code review for a team member.
+
+<img src="./snap-shot/01.png" width="600" />
+<img src="./snap-shot/02.png" width="600" />
+
 
 ## Built With
 
@@ -16,10 +22,11 @@ To get a local copy up and running follow these simple example steps:
 - Run `git clone` and Paste the link
 - After the clone, type in the command `cd js-capstone-project` to access the directory on the terminal
 - run `npm install`.
-- Run `npm run dev` and it will load a live server in http://localhost:8080/
+- Run `npm run start` and it will load a live server in http://localhost:8080/
 - Run `npm run build` and it will build and optimized files for production mood
 
-##👤 Authors
+###👤 Authors
+
 👤 **Muhmmd Usama** 
 - GitHub: [@muhmmdusama](https://github.com/muhmmdusama)
 - Twitter: [@muhmmdusama](https://twitter.com/muhmmdusama)
