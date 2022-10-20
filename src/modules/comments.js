@@ -30,9 +30,7 @@ const getMEAlById = async (mealID) => {
 const commentModel = async (mealID) => {
   const mealArr = await getMEAlById(mealID);
   const meal = mealArr[0];
-  // const body = document.querySelector('body');
   const body = document.querySelector('.modelPopupComment');
-  // body.innerHTML='';
   const mealData = `
       <div class="mealContainer">
         <span class="closeBtn">X</span>
