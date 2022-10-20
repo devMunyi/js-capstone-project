@@ -15,15 +15,10 @@ export const displayCategories = () => {
     });
   });
 };
-
-// export const displayData = (categoryName) => {
-  //   populateMealsOnUi(categoryName);
-  // };
   
   select.addEventListener('change', (event) => {
     const categoryName = event.target.value;
       populateMealsOnUi(categoryName);
-  // displayData(categoryName);
 });
 
 export const populateMealsOnUi = async (category) => {
@@ -92,8 +87,6 @@ export const populateMealsOnUi = async (category) => {
   listElem.addEventListener('click', (e) => {
     if (e.target.classList.contains('commentBtn')) {
       const target = e.target.id;
-      // const body = document.querySelector('.modelPopupComment');
-      // body.innerHTML='';
       commentModel(target);
     }
   });
@@ -109,5 +102,3 @@ export const populateMealsOnUi = async (category) => {
     updateUiLikes();
   }, 50);
 };
-
-// export default populateMealsOnUi;

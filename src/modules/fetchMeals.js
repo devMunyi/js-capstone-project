@@ -12,5 +12,3 @@ export const fetchMealsList = async (category) => {
   const response = await fetch(filterCategoryAPI);
   return response.json();
 };
-
-// export default fetchMeals;
