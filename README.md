@@ -2,8 +2,8 @@
 
 This is the JavaScript capstone project. We build Meal recipes website based on an external API (Meals DB)[https://www.themealdb.com/api.php] and (Involvement API)[https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270]. The websites is dynamic and build basic single page apps using ES6 syntax, ES6 modules, callbacks, promises and webpack. follow Gitflow and perform a code review for a team member.
 
-<img src="./snap-shot/01.png" width="600" />
-<img src="./snap-shot/02.png" width="600" />
+<img src="https://raw.githubusercontent.com/devMunyi/js-capstone-project/comments-branch/snap-shots/01.png" width="400" />
+<img src="https://raw.githubusercontent.com/devMunyi/js-capstone-project/comments-branch/snap-shots/02.png" width="400" />
 
 
 ## Built With
