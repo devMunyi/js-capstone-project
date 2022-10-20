@@ -1,37 +1,39 @@
-
 // Comments API ###########
 const getComments = async (mealID) => {
-    const CommentsURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VVz1wwAQ8Ebmg3VCVNcW/comments?item_id=${mealID}`;
-    const response = await fetch(CommentsURL);
-    const data = await response.json();
-    return data;
-  };
-  
-  const postComment = (userReview, callBack) => {
-    fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/VVz1wwAQ8Ebmg3VCVNcW/comments', {
+  const CommentsURL = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/tAR2rciEgJsGLoYohb3H/comments?item_id=${mealID}`;
+  const response = await fetch(CommentsURL);
+  const data = await response.json();
+  return data;
+};
+
+const postComment = (userReview, callBack) => {
+  fetch(
+    'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/tAR2rciEgJsGLoYohb3H/comments',
+    {
       method: 'POST',
       headers: {
         accept: 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify(userReview),
-  
-    })
-      .then(() => callBack && callBack());
-  };
-  
-  const getMEAlById = async (mealID) => {
-    const mealIdAPI = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`;
-    const response = await fetch(mealIdAPI);
-    const data = await response.json();
-    return data.meals;
-  };
-  
-  const commentModel = async (mealID) => {
-    const mealArr = await getMEAlById(mealID);
-    const meal = mealArr[0];
-    const body = document.querySelector('body');
-    const mealData = `
+    }
+  ).then(() => callBack && callBack());
+};
+
+const getMEAlById = async (mealID) => {
+  const mealIdAPI = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`;
+  const response = await fetch(mealIdAPI);
+  const data = await response.json();
+  return data.meals;
+};
+
+const commentModel = async (mealID) => {
+  const mealArr = await getMEAlById(mealID);
+  const meal = mealArr[0];
+  // const body = document.querySelector('body');
+  const body = document.querySelector('.modelPopupComment');
+  // body.innerHTML='';
+  const mealData = `
       <div class="mealContainer">
         <span class="closeBtn">X</span>
 
@@ -56,64 +58,69 @@ const getComments = async (mealID) => {
         </div>
       </div>
       `;
-    const popComment = document.createElement('section');
-    popComment.className = 'popComment';
-    popComment.innerHTML = mealData;
-    const closeBtn = popComment.querySelector('.closeBtn');
-    closeBtn.addEventListener('click', () => {
-      popComment.parentElement.removeChild(popComment);
-      body.style.overflow = 'scroll';
-    });
-    body.style.overflow = 'hidden';
-    body.appendChild(popComment);
-    addComment(mealID);
-    renderComments(mealID);
-  };
-  
-  
-  export const commentCounters = (array) => {
-    const counter = array.length || 0;
-    return counter;
-  };
-  
-  const renderComments = async (mealID) => {
-    const reviewArray = await getComments(mealID);
-    const reviewSection = document.querySelector('#comments');
-    reviewSection.innerHTML = '';
-    const reviewCounter = document.createElement('h3');
-    reviewCounter.classList = 'commentCount';
-    reviewCounter.innerHTML = `Reviews (${commentCounters(reviewArray)})`;
-    reviewSection.appendChild(reviewCounter);
+  const popComment = document.createElement('section');
+  popComment.className = 'popComment';
+  popComment.innerHTML = mealData;
+  const closeBtn = popComment.querySelector('.closeBtn');
+  closeBtn.addEventListener('click', () => {
+    popComment.parentElement.removeChild(popComment);
+  });
+  document.querySelectorAll('.popComment').forEach((model) => {
+    model.remove();
+  });
+  body.appendChild(popComment);
+  addComment(mealID);
+  renderComments(mealID);
+};
 
+export const commentCounters = (array) => {
+  const counter = array.length || 0;
+  return counter;
+};
+
+const renderComments = async (mealID) => {
+  const reviewArray = await getComments(mealID);
+  const reviewSection = document.querySelector('#comments');
+  reviewSection.innerHTML = '';
+  const reviewCounter = document.createElement('h3');
+  reviewCounter.classList = 'commentCount';
+  reviewCounter.innerHTML = `Reviews (${commentCounters(reviewArray)})`;
+  reviewSection.appendChild(reviewCounter);
+
+  try{
     reviewArray.forEach((comment) => {
       const userReview = document.createElement('div');
       userReview.classList = 'comment';
       const commentData = `
-                <p class="commentDate">${comment.creation_date}</p>
-                <div class="commentText">
-                <p class="userName">${comment.username}:</p>
-                <p class="commentDetails">${comment.comment}</p>
-                </div>
+      <p class="commentDate">${comment.creation_date}</p>
+      <div class="commentText">
+      <p class="userName">${comment.username}:</p>
+      <p class="commentDetails">${comment.comment}</p>
+      </div>
       `;
       userReview.innerHTML = commentData;
       reviewSection.appendChild(userReview);
     });
-  };
-  
-  const addComment = (mealID) => {
-    const commentForm = document.getElementById('addComment');
-    const userName = document.getElementById('userName');
-    const review = document.getElementById('commentMsg');
-  
-    commentForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const userReview = {
-        item_id: mealID,
-        username: userName.value,
-        comment: review.value,
-      };
-      postComment(userReview, () => renderComments(mealID));
-    });
-  };
-  
-  export default commentModel
+  }catch(e){
+    reviewSection.style.fontWeight = "bold"
+    reviewSection.innerHTML = 'No reviews Yet'
+  }
+};
+
+const addComment = (mealID) => {
+  const commentForm = document.getElementById('addComment');
+  const userName = document.getElementById('userName');
+  const review = document.getElementById('commentMsg');
+
+  commentForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const userReview = {
+      item_id: mealID,
+      username: userName.value,
+      comment: review.value,
+    };
+    postComment(userReview, () => renderComments(mealID));
+  });
+};
+
+export default commentModel;

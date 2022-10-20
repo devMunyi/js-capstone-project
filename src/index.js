@@ -8,8 +8,8 @@ import {
 import addLike from './modules/addLike.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // populateMealsOnUi('beef');
-  displayData('beef');
+  populateMealsOnUi('beef');
+  // displayData('beef');
   displayCategories();
 });
 
