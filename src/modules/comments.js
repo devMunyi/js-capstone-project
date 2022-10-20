@@ -16,7 +16,7 @@ const postComment = (userReview, callBack) => {
         'Content-type': 'application/json',
       },
       body: JSON.stringify(userReview),
-    }
+    },
   ).then(() => callBack && callBack());
 };
 
@@ -67,8 +67,8 @@ const commentModel = async (mealID) => {
     model.remove();
   });
   body.appendChild(popComment);
-  addComment(mealID);
-  renderComments(mealID);
+  addComment(mealID); // eslint-disable-line
+  renderComments(mealID); // eslint-disable-line
 };
 
 export const commentCounters = (array) => {
@@ -85,7 +85,7 @@ const renderComments = async (mealID) => {
   reviewCounter.innerHTML = `Reviews (${commentCounters(reviewArray)})`;
   reviewSection.appendChild(reviewCounter);
 
-  try{
+  try {
     reviewArray.forEach((comment) => {
       const userReview = document.createElement('div');
       userReview.classList = 'comment';
@@ -99,9 +99,9 @@ const renderComments = async (mealID) => {
       userReview.innerHTML = commentData;
       reviewSection.appendChild(userReview);
     });
-  }catch(e){
-    reviewSection.style.fontWeight = "bold"
-    reviewSection.innerHTML = 'No reviews Yet'
+  } catch (e) {
+    reviewSection.style.fontWeight = 'bold';
+    reviewSection.innerHTML = 'No reviews Yet';
   }
 };
 

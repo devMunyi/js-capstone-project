@@ -4,6 +4,7 @@ import itemsCount from './itemsCount.js';
 import commentModel from './comments.js';
 
 const select = document.querySelector('.form-select');
+
 // ########fetch all meals cat to Droplist
 export const displayCategories = () => {
   fetchMeals().then((data) => {
@@ -15,22 +16,18 @@ export const displayCategories = () => {
     });
   });
 };
-  
-  select.addEventListener('change', (event) => {
-    const categoryName = event.target.value;
-      populateMealsOnUi(categoryName);
-});
 
 export const populateMealsOnUi = async (category) => {
   // meals data
-  const { meals: meals } = await fetchMealsList(category);
-  //row
+  const { meals: mealItem } = await fetchMealsList(category);
+
+  // row
   let row = '';
 
   // meals list dom placeholder
   const listElem = document.querySelector('.meals-list');
 
-  meals.forEach((meal) => {
+  mealItem.forEach((meal) => {
     row += `<div class="cards-grid mb-5">
         <div class="card">
           <img
@@ -102,3 +99,8 @@ export const populateMealsOnUi = async (category) => {
     updateUiLikes();
   }, 50);
 };
+
+select.addEventListener('change', (event) => {
+  const categoryName = event.target.value;
+  populateMealsOnUi(categoryName);
+});
