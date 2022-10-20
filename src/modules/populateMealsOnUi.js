@@ -31,7 +31,6 @@ select.addEventListener('change', (event) => {
 export const populateMealsOnUi = async (category) => {
   // meals data
   const { meals: meals } = await fetchMealsList(category);
-
   //row
   let row = '';
 
@@ -95,7 +94,6 @@ export const populateMealsOnUi = async (category) => {
   listElem.addEventListener('click', (e)=>{
     if(e.target.classList.contains('commentBtn')){
       const target = e.target.id;
-      console.log(target)
       commentModel(target)
     }
 
