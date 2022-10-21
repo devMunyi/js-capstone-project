@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* style for small screens only */
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+
+  .meals-list {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+}
+
+/* style for big screens only */
+@media screen and (min-width: 768px) {
+  .meals-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 30px;
+  }
+}
+
+/* common styles  */
+.title-and-likes-wrapper {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: auto;
+  justify-content: space-between;
+}
+
+.likes-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.liked {
+  color: red;
+  transform: scale(1.5);
+}
+
+svg {
+  cursor: pointer !important;
+}
+
+svg:hover {
+  transform: scale(1.4);
+}
+
+.bi-pencil-square {
+  pointer-events: none;
+}
+
+.navbar-brand,
+.nav-item .nav-link {
+  color: white;
+}
+
+.nav-link:hover,
+.btn:hover {
+  color: black;
+}
+
+footer {
+  color: white;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.footer-link:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+/* ############## Model style */
+
+.popComment {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.mealContainer {
+  z-index: 3;
+  width: 60%;
+  height: 90%;
+  padding: 10px 0 0 0;
+  background: #fff;
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.mealContainer h2 {
+  font-size: 1rem;
+  font-weight: bold;
+  background: #dbdbdb;
+  padding: 0.5rem;
+}
+
+.closeBtn {
+  margin-right: 30px;
+  color: #000;
+  align-self: flex-end;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.mealThump {
+  width: 27%;
+}
+
+.mealThump img {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.mealDetails {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #dbdbdb;
+  font-weight: bold;
+  gap: 50px;
+  border-radius: 3px;
+}
+
+.mealDetails p {
+  margin: 0;
+  padding: 0.3rem 0;
+}
+
+form h3 {
+  margin: 0;
+  color: #909090;
+}
+
+.commentsContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.comments {
+  text-align: center;
+}
+
+.comment {
+  display: flex;
+  gap: 10px;
+  background: #b2b2b2;
+  align-items: center;
+  border-radius: 3px;
+  margin: 0.3rem 0;
+}
+
+.comment p {
+  margin: 0;
+  padding: 0.3rem;
+  font-weight: bold;
+}
+
+.comment .commentDate {
+  color: #525252;
+}
+
+.addComment {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 30%;
+}
+
+.commentText {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+}
+
+.commentText .userName {
+  background: #dbdbdb;
+}
+
+.CommentBtn {
+  font-size: 1.1em;
+  font-weight: 500;
+}
