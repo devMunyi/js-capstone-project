@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+body {
+  font-family: 'Montserrat', sans-serif !important;
+}
 /* style for small screens only */
 @media screen and (max-width: 768px) {
   .card {
@@ -23,7 +27,9 @@
 
 /* common styles  */
 .title-and-likes-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: auto;
   justify-content: space-between;
 }
 
