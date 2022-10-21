@@ -16,6 +16,8 @@ This is the JavaScript capstone project. We build Meal recipes website based on 
 ## Getting Started
 ### See on [live](https://devmunyi.github.io/js-capstone-project/)
 
+#### Project documentation [Video](https://drive.google.com/file/d/1f-ysh5WFmlO_rOJ-hEUjCrJSskq0Q5fL/view?usp=sharing)
+
 To get a local copy up and running follow these simple example steps:
 
 - Open your terminal or command line
