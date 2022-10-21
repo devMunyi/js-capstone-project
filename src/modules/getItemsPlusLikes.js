@@ -1,4 +1,4 @@
-import { involvementAPI } from './configs.js';
+import involvementAPI from './configs.js';
 
 // get a list of items with its respective likes
 const getItemsPlusLikes = async () => {
@@ -14,7 +14,7 @@ const getItemsPlusLikes = async () => {
     const data = response.json() || [];
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 };
 

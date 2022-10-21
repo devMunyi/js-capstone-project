@@ -57,6 +57,10 @@ svg:hover {
   transform: scale(1.4);
 }
 
+.bi-pencil-square {
+  pointer-events: none;
+}
+
 .navbar-brand,
 .nav-item .nav-link {
   color: white;
@@ -146,7 +150,7 @@ footer {
   align-items: center;
   background: #dbdbdb;
   font-weight: bold;
-  /* gap: 50px; */
+  gap: 50px;
   border-radius: 3px;
 }
 
