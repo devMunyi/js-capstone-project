@@ -37,7 +37,7 @@ export const populateMealsOnUi = async (category) => {
           />
           <div class="card-body">
             <div class="title-and-likes-wrapper mb-5">
-              <h5 class="card-title">${meal.strMeal}</h5>
+              <h6 class="card-title">${meal.strMeal}</h6>
               <div class="likes-wrapper">
                 <svg
                   onclick="addLike(${meal.idMeal})"
